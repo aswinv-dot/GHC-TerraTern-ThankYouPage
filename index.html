@@ -19,26 +19,7 @@
             overflow-x: hidden;
         }
 
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #f1c819;
-            position: absolute;
-            animation: confetti-fall 3s ease-out forwards;
-            z-index: 1000;
-        }
 
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
 
         .container {
             max-width: 600px;
@@ -472,37 +453,5 @@
             <p class="footer-text">Focus on your dream, and we'll handle the rest!</p>
         </div>
     </div>
-
-    <script>
-        function createConfetti() {
-            const colors = ['#f1c819', '#9acbfd', '#ffffff', '#255cc1'];
-            const confettiCount = 80;
-            
-            for (let i = 0; i < confettiCount; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                    
-                    if (Math.random() > 0.5) {
-                        confetti.style.borderRadius = '50%';
-                    }
-                    
-                    document.body.appendChild(confetti);
-                    
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 4000);
-                }, i * 30);
-            }
-        }
-
-        window.addEventListener('load', () => {
-            createConfetti();
-        });
-    </script>
 </body>
 </html>
