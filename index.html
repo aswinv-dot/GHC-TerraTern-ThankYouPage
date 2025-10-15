@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Registering!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00215c 0%, #255cc1 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f1c819;
+            position: absolute;
+            animation: confetti-fall 3s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .celebration {
+            font-size: 60px;
+            margin-bottom: 10px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #9acbfd;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .card:nth-child(3) { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+        .card:nth-child(4) { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+
+        .section-title {
+            color: #00215c;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .section-text {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #255cc1 0%, #00215c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(37, 92, 193, 0.5);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #333;
+        }
+
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #255cc1 0%, #00215c 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(0,33,92,0.4);
+            transition: transform 0.3s ease;
+            margin: 10px 0;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #9acbfd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #f1c819;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .highlight {
+            color: #f1c819;
+            font-weight: bold;
+        }
+
+        .logo-placeholder {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .logo-placeholder img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .whatsapp-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: white;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #9acbfd;
+        }
+
+        .scholarship-card {
+            background: linear-gradient(135deg, #f1c819 0%, #ffd700 100%);
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite, fadeInUp 0.8s ease-out;
+            animation-fill-mode: forwards;
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 0 rgba(241, 200, 25, 0.7);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 0 20px rgba(241, 200, 25, 0);
+            }
+        }
+
+        .scholarship-banner {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scholarship-banner::before {
+            content: '★';
+            position: absolute;
+            font-size: 100px;
+            color: rgba(255, 255, 255, 0.1);
+            top: -20px;
+            left: -10px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .scholarship-banner::after {
+            content: '★';
+            position: absolute;
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.1);
+            bottom: -10px;
+            right: -10px;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .scholarship-amount {
+            font-size: 48px;
+            font-weight: 900;
+            color: #00215c;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 5px;
+            animation: scaleIn 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scholarship-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00215c;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scholarship-subtext {
+            font-size: 16px;
+            color: #00215c;
+            font-weight: bold;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 480px) {
+            .scholarship-amount {
+                font-size: 40px;
+            }
+
+            .scholarship-text {
+                font-size: 26px;
+                letter-spacing: 2px;
+            }
+
+            .scholarship-subtext {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            
+            .celebration {
+                font-size: 50px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-placeholder">
+                <img src="logo.png" alt="Company Logo">
+            </div>
+            <h1>Thank You for Registering!</h1>
+            <p class="subtitle">You're one step closer to working in Germany as a registered nurse <span>🇩🇪</span></p>
+        </div>
+
+        <div class="card">
+            <div class="section-title">What's Next?</div>
+            <p class="section-text">Our Certified Immigration Advisor will contact you shortly to guide you through your scholarship process and ensure a smooth journey ahead.</p>
+        </div>
+
+        <div class="card scholarship-card">
+            <div class="scholarship-banner">
+                <div class="badge" style="margin-bottom: 15px;">Only for First 100 Enrolments!</div>
+                <div class="scholarship-amount">₹1 Crore</div>
+                <div class="scholarship-text">SCHOLARSHIP</div>
+                <div class="scholarship-subtext">Fee Refund Before You Fly*</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">🎓 Exclusive Benefits</div>
+            <ul class="benefits-list">
+                <li>
+                    <span class="icon">💼</span>
+                    <span><strong>Guaranteed Job Offer</strong> in Germany</span>
+                </li>
+                <li>
+                    <span class="icon">✈️</span>
+                    <span><strong>Free Flight Tickets</strong> & Accommodation</span>
+                </li>
+                <li>
+                    <span class="icon">🇩🇪</span>
+                    <span><strong>German Language Training</strong> (B2 Level)</span>
+                </li>
+                <li>
+                    <span class="icon">💰</span>
+                    <span><strong>Earn up to ₹3 Lakh/month</strong></span>
+                </li>
+                <li>
+                    <span class="icon">⏰</span>
+                    <span><strong>37.5 hrs/week</strong> vs 80 hrs in India</span>
+                </li>
+                <li>
+                    <span class="icon">🏖️</span>
+                    <span><strong>24 Days Paid Leave</strong></span>
+                </li>
+                <li>
+                    <span class="icon">🎓</span>
+                    <span><strong>Free Child Education</strong></span>
+                </li>
+                <li>
+                    <span class="icon">🏥</span>
+                    <span><strong>Full Healthcare</strong> & Family Reunification Benefits</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card contact-section">
+            <a href="https://wa.me/+919036354400" class="whatsapp-button" target="_blank">
+                💬 Check your WhatsApp, we've sent something for you
+            </a>
+            <a href="tel:+918073103819" class="cta-button">
+                📞 Call us: +91 80731 03819
+            </a>
+            <div class="footer-links">
+                <a href="#">Refund Policy</a>
+                <span style="color: #9acbfd;">|</span>
+                <a href="#">Terms & Conditions</a>
+                <span style="color: #9acbfd;">|</span>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text">Focus on your dream, and we'll handle the rest!</p>
+        </div>
+    </div>
+
+    <script>
+        function createConfetti() {
+            const colors = ['#f1c819', '#9acbfd', '#ffffff', '#255cc1'];
+            const confettiCount = 80;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    
+                    if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '50%';
+                    }
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 30);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            createConfetti();
+        });
+    </script>
+</body>
+</html>
